@@ -304,3 +304,173 @@ a:focus-visible, button:focus-visible{outline:3px solid rgba(108,190,222,.55)}
 @media (prefers-reduced-motion: reduce){
   *{scroll-behavior:auto!important; animation:none!important; transition:none!important}
 }
+
+/* =========================================================
+   NUEVO: Estilos específicos PARA el NAV RESPONSIVO
+   ========================================================= */
+   /* Estilos generales del header */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #44789B; /* Color morado secundario */
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Estilos del menú normal (escritorio) */
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav__menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav__menu a:not(.btn--primary):hover {
+  color: #6CBEDE; /* Color celeste primario */
+}
+
+.nav__menu a:not(.btn--primary):after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #6CBEDE;
+  transition: width 0.3s ease;
+}
+
+.nav__menu a:not(.btn--primary):hover:after {
+  width: 100%;
+}
+
+/* Botón Únete con estilos de la paleta */
+.btn--primary {
+  background-color: #461DA3; /* Morado principal */
+  color: rgb(255, 255, 255);
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn--primary:hover {
+  background-color: #36177B; /* Morado más oscuro */
+  color: white;
+}
+
+/* Botón de menú hamburguesa (oculto en escritorio) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger {
+  width: 25px;
+  height: 2px;
+  background-color: white;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hamburger:before,
+.hamburger:after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.hamburger:before {
+  transform: translateY(-8px);
+}
+
+.hamburger:after {
+  transform: translateY(8px);
+}
+
+/* Estilos para móviles */
+@media screen and (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+  
+  .nav__menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: linear-gradient(135deg, #44789B 0%, #461DA3 100%); /* Degradado morado */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: right 0.4s ease;
+    padding: 2rem;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav__menu.active {
+    right: 0;
+  }
+  
+  /* Animación del botón hamburguesa a X */
+  .nav-toggle[aria-expanded="true"] .hamburger {
+    background-color: transparent;
+  }
+  
+  .nav-toggle[aria-expanded="true"] .hamburger:before {
+    transform: rotate(45deg);
+  }
+  
+  .nav-toggle[aria-expanded="true"] .hamburger:after {
+    transform: rotate(-45deg);
+  }
+  
+  /* Estilos para el botón Únete en móviles */
+  .nav__menu .btn--primary {
+    margin-top: 1rem;
+  }
+}
+
+/* Pequeños ajustes para tablets */
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  .nav__menu {
+    gap: 1rem;
+  }
+  
+  .nav__menu a {
+    font-size: 0.9rem;
+  }
+}
