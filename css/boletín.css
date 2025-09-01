@@ -1,0 +1,131 @@
+/* Estilos para el boletín */
+.newsletter-container {
+  background: linear-gradient(135deg, #F6F4EF 0%, #b8dfec 100%);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(67, 120, 155, 0.12);
+}
+
+.newsletter-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.newsletter-icon {
+  background-color: #E0611F;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  font-size: 24px;
+}
+
+.newsletter-header h3 {
+  color: #44789B;
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+}
+
+.newsletter-header p {
+  color: #606060;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.newsletter-form {
+  margin-bottom: 20px;
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.newsletter-form input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #D4C6F5;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.newsletter-form input:focus {
+  outline: none;
+  border-color: #461DA3;
+  box-shadow: 0 0 0 2px rgba(70, 29, 163, 0.2);
+}
+
+.btn--newsletter {
+  width: 100%;
+  background-color: #461DA3;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn--newsletter:hover {
+  background-color: #36177B;
+}
+
+.newsletter-divider {
+  background-color: #D4C6F5;
+  height: 1px;
+  margin: 20px 0;
+  opacity: 0.6;
+}
+
+.newsletter-benefits h4 {
+  color: #44789B;
+  margin: 0 0 10px;
+  font-size: 1rem;
+}
+
+.newsletter-benefits ul {
+  color: #606060;
+  padding-left: 20px;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.newsletter-benefits li {
+  margin-bottom: 6px;
+}
+
+.newsletter-contact {
+  text-align: center;
+  font-style: normal;
+}
+
+.contact-title {
+  color: #44789B;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.contact-cities {
+  color: #606060;
+  margin-bottom: 12px;
+}
+
+.newsletter-contact a {
+  color: #6CBEDE;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.newsletter-contact a:hover {
+  color: #44789B;
+  text-decoration: underline;
+}
