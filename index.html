@@ -1,271 +1,481 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" dir="ltr">
 <head>
   <meta charset="utf-8" />
   <title>PMI Norte Perú — Proyectos que mueven regiones</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="PMI Norte Perú: una lectura guiada por capítulos — misión, impacto y comunidad de dirección de proyectos en Cajamarca, Piura y Trujillo." />
+  <meta name="description" content="PMI Norte Perú. Misión, comunidad y eventos de dirección de proyectos en Cajamarca, Piura y Trujillo." />
   <link rel="icon" href="img/favicon.ico" />
-  <!-- Tipografías sobrias -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Aptos:wght@400;600;700&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Aptos:wght@400;600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PMI Norte Perú — Proyectos que mueven regiones" />
+  <meta property="og:description" content="Formamos, conectamos e inspiramos para entregar valor mediante proyectos." />
+  <meta property="og:image" content="img/og/cover.jpg" />
 </head>
 
-<body>
-  <!-- Progreso lateral -->
-  <aside class="rail" aria-hidden="true">
-    <div class="rail__line"></div>
-    <nav class="rail__dots" id="railNav">
-      <a href="#cap-0" data-section="cap-0" class="is-active" aria-label="Prólogo"></a>
-      <a href="#cap-1" data-section="cap-1" aria-label="Misión"></a>
-      <a href="#cap-2" data-section="cap-2" aria-label="Por qué PMI"></a>
-      <a href="#cap-3" data-section="cap-3" aria-label="Historia"></a>
-      <a href="#cap-4" data-section="cap-4" aria-label="Comunidad"></a>
-      <a href="#cap-5" data-section="cap-5" aria-label="Casos"></a>
-      <a href="#cap-6" data-section="cap-6" aria-label="Eventos"></a>
-      <a href="#cap-7" data-section="cap-7" aria-label="Únete"></a>
-    </nav>
-  </aside>
-
+<body class="theme-celeste">
   <a class="skip" href="#main">Saltar al contenido</a>
 
-  <!-- Header minimal -->
-  <header class="header" data-header>
+  <!-- NAV -->
+  <header class="site-header" role="banner" data-header>
     <div class="container nav">
-      <a class="brand" href="#" aria-label="PMI Norte Perú - Inicio">
-        <img src="img/logo/logo_blanco.png" alt="PMI Norte Perú" />
+      <a class="brand" href="#hero" aria-label="PMI Norte Perú - Inicio">
+        <img src="img/logo/logo_blanco.png" alt="PMI Norte Perú" height="36" loading="eager">
       </a>
-      <nav class="nav__menu" aria-label="Navegación">
+      <nav class="nav__menu" aria-label="Navegación principal">
         <a href="#cap-1">Misión</a>
         <a href="#cap-2">¿Por qué PMI?</a>
+        <a href="#cap-3">Historia</a>
         <a href="#cap-4">Comunidad</a>
+        <a href="#cap-5">Impacto</a>
         <a href="#cap-6">Eventos</a>
-        <a href="#cap-7" class="btn btn--brand">Únete</a>
+        <a href="#cap-7" class="btn btn--primary">Únete</a>
       </nav>
     </div>
   </header>
 
+  <!-- Rail lateral (scrollspy) -->
+  <nav id="railNav" aria-label="Índice de secciones" style="position:fixed; right:18px; top:50%; transform:translateY(-50%); display:grid; gap:10px; z-index:40;">
+    <a href="#hero" aria-label="Ir al inicio" data-section="hero" style="width:10px;height:10px;border-radius:50%;background:#9CCFE4;outline:none;"></a>
+    <a href="#cap-1" aria-label="Ir a Misión" data-section="cap-1" style="width:10px;height:10px;border-radius:50%;background:#9CCFE4;"></a>
+    <a href="#cap-2" aria-label="Ir a ¿Por qué PMI?" data-section="cap-2" style="width:10px;height:10px;border-radius:50%;background:#9CCFE4;"></a>
+    <a href="#cap-3" aria-label="Ir a Historia" data-section="cap-3" style="width:10px;height:10px;border-radius:50%;background:#9CCFE4;"></a>
+    <a href="#cap-4" aria-label="Ir a Comunidad" data-section="cap-4" style="width:10px;height:10px;border-radius:50%;background:#9CCFE4;"></a>
+    <a href="#cap-5" aria-label="Ir a Historias de impacto" data-section="cap-5" style="width:10px;height:10px;border-radius:50%;background:#9CCFE4;"></a>
+    <a href="#cap-6" aria-label="Ir a Eventos" data-section="cap-6" style="width:10px;height:10px;border-radius:50%;background:#9CCFE4;"></a>
+    <a href="#cap-7" aria-label="Ir a Únete" data-section="cap-7" style="width:10px;height:10px;border-radius:50%;background:#9CCFE4;"></a>
+    <a href="#cap-8" aria-label="Ir a Contacto" data-section="cap-8" style="width:10px;height:10px;border-radius:50%;background:#9CCFE4;"></a>
+  </nav>
+
+  <!-- CTA flotante -->
+  <a href="#cap-6" class="floating-cta" aria-label="Inscríbete a los próximos eventos">Inscríbete ahora</a>
+
   <main id="main">
-    <!-- ===== Cap 0: Prólogo ===== -->
-    <section id="cap-0" class="chapter hero">
-      <div class="container hero__grid">
+    <!-- HERO -->
+    <section id="hero" class="section hero" aria-label="Sección principal">
+      <!-- Video de fondo -->
+      <div class="hero__bg" aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;z-index:0;opacity:.6;">
+        <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="img/portadas/trujillo_portada.png" style="min-width:100%;min-height:100%;object-fit:cover;filter:saturate(110%) contrast(105%);">
+          <source src="media/hero.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="decor decor--tri-1" aria-hidden="true"></div>
+      <div class="decor decor--tri-2" aria-hidden="true"></div>
+
+      <div class="container hero__grid" style="position:relative; z-index:1;">
         <div class="hero__copy">
-          <p class="eyebrow">Lectura guiada · 7 minutos</p>
-          <h1>Hacemos que <span class="accent">las ideas avancen</span>.</h1>
-          <p class="lead">Esto no es una “página”. Es una historia sobre cómo la dirección de proyectos transforma ciudades y personas en el norte del Perú.</p>
-          <div class="actions">
-            <a href="#cap-1" class="btn btn--brand">Iniciar recorrido</a>
-            <a href="#cap-6" class="btn btn--quiet">Ver próximos eventos</a>
+          <p class="eyebrow">PMI Norte Perú</p>
+          <h1>Proyectos que <span class="txt-gradient">mueven regiones</span></h1>
+          <p class="lead">Transformamos ideas en <strong>valor real</strong> para Cajamarca, Piura y Trujillo mediante dirección de proyectos.</p>
+
+          <div class="hero__actions">
+            <a href="#cap-6" class="btn btn--primary">Ver eventos</a>
+            <a href="#cap-2" class="btn btn--secondary">Conocer el capítulo</a>
+          </div>
+
+          <!-- contador estilo congreso -->
+          <div class="counter glass" data-countdown="2025-11-07T09:00:00-05:00" aria-label="Cuenta regresiva al próximo congreso">
+            <div><span class="num" data-unit="days">00</span><small>Días</small></div>
+            <div><span class="num" data-unit="hours">00</span><small>Horas</small></div>
+            <div><span class="num" data-unit="minutes">00</span><small>Min</small></div>
+            <div><span class="num" data-unit="seconds">00</span><small>Seg</small></div>
           </div>
         </div>
-        <figure class="hero__media" aria-hidden="true">
-          <img src="img/portadas/trujillo_portada.png" alt="">
-          <figcaption>Trujillo · Piura · Cajamarca</figcaption>
-        </figure>
+
+        <aside class="hero__card glass reveal">
+          <figure>
+            <img src="img/portadas/trujillo_portada.png" alt="Norte del Perú — Trujillo, Piura y Cajamarca" loading="lazy">
+          </figure>
+          <div class="hero__card-body">
+            <h3>VI Congreso Internacional</h3>
+            <p class="muted">7–8 de noviembre · Modalidad híbrida · Emite PDUs</p>
+            <div class="hero__card-actions">
+              <a href="#cap-6" class="btn btn--secondary">Ver agenda</a>
+              <a href="#cap-6" class="btn btn--primary">Inscribirme</a>
+            </div>
+          </div>
+        </aside>
       </div>
-      <div class="scroll-hint" aria-hidden="true">Desliza</div>
     </section>
 
-    <!-- ===== Cap 1: Misión ===== -->
-    <section id="cap-1" class="chapter manifesto">
-      <div class="container narrow">
-        <header class="chapter__head">
+    <!-- MISIÓN -->
+    <section id="cap-1" class="section" aria-labelledby="mision-title">
+      <div class="container">
+        <header class="section__head">
           <span class="kicker">Capítulo I</span>
-          <h2>Nuestra misión</h2>
+          <h2 id="mision-title">Nuestra misión</h2>
+          <p class="lead">Formar, conectar e inspirar personas para <strong>entregar valor</strong> a través de proyectos.</p>
         </header>
-        <p class="xxl reveal">Formar, conectar e inspirar personas para **entregar valor** a través de proyectos que mejoran vidas en nuestra región.</p>
-        <div class="grid-3">
-          <article class="tile reveal">
+
+        <div class="grid grid-3">
+          <article class="card card--feature reveal">
+            <div class="card__icon" aria-hidden="true">🎓</div>
             <h3>Educación</h3>
-            <p>Programas y PDUs con estándares globales.</p>
+            <p>Programas con estándares globales y PDUs garantizados.</p>
           </article>
-          <article class="tile reveal">
+          <article class="card card--feature reveal">
+            <div class="card__icon" aria-hidden="true">🤝</div>
             <h3>Comunidad</h3>
-            <p>Mentores, aliados y oportunidades reales.</p>
+            <p>Red de mentores, aliados y oportunidades reales.</p>
           </article>
-          <article class="tile reveal">
+          <article class="card card--feature reveal">
+            <div class="card__icon" aria-hidden="true">📈</div>
             <h3>Impacto</h3>
-            <p>Proyectos que cierran brechas y abren futuro.</p>
+            <p>Proyectos con métricas, cierre y lecciones aprendidas.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ===== Cap 2: Por qué PMI ===== -->
-    <section id="cap-2" class="chapter reasons">
+    <!-- POR QUÉ PMI -->
+    <section id="cap-2" class="section section--alt" aria-labelledby="porque-title">
       <div class="container">
-        <header class="chapter__head">
+        <header class="section__head">
           <span class="kicker">Capítulo II</span>
-          <h2>¿Por qué el capítulo PMI Norte Perú?</h2>
+          <h2 id="porque-title">¿Por qué el capítulo PMI Norte Perú?</h2>
         </header>
 
-        <div class="reasons__grid">
-          <article class="reason reveal">
-            <div class="tag">Del caos al rumbo</div>
+        <div class="grid grid-3">
+          <article class="card reveal">
             <h3>Claridad ejecutiva</h3>
-            <p>Convertimos objetivos difusos en planes medibles.</p>
+            <p>Del caos al rumbo: objetivos difusos → planes medibles.</p>
           </article>
-          <article class="reason reveal">
-            <div class="tag">Del aislamiento a la red</div>
+          <article class="card reveal">
             <h3>Capital social</h3>
-            <p>Conecta con quienes ya hicieron lo que tú buscas hacer.</p>
+            <p>Del aislamiento a la red: conecta con quienes ya lo lograron.</p>
           </article>
-          <article class="reason reveal">
-            <div class="tag">De la promesa al resultado</div>
+          <article class="card reveal">
             <h3>Valor tangible</h3>
-            <p>Métricas, cierre y lecciones aprendidas. Siempre.</p>
+            <p>De la promesa al resultado: métricas y entregables.</p>
           </article>
         </div>
 
-        <figure class="pullquote reveal">
-          <blockquote>“Primero ordenamos. Luego priorizamos. Después entregamos valor.”</blockquote>
-          <figcaption>— Manifiesto del capítulo</figcaption>
-        </figure>
+        <blockquote class="quote reveal">“Primero ordenamos. Luego priorizamos. Después entregamos valor.”</blockquote>
       </div>
     </section>
 
-    <!-- ===== Cap 3: Historia (línea de tiempo) ===== -->
-    <section id="cap-3" class="chapter timeline">
+    <!-- HISTORIA -->
+    <section id="cap-3" class="section" aria-labelledby="historia-title">
       <div class="container">
-        <header class="chapter__head">
+        <header class="section__head">
           <span class="kicker">Capítulo III</span>
-          <h2>Historia breve</h2>
+          <h2 id="historia-title">Historia breve</h2>
         </header>
 
-        <div class="timeline__wrap">
-          <div class="timeline__rail" aria-hidden="true"></div>
-          <article class="milestone reveal">
-            <time>2008–2009</time>
+        <div class="timeline">
+          <div class="timeline__item reveal">
+            <time datetime="2008">2008–2009</time>
             <h3>Nace la comunidad en Cajamarca</h3>
             <p>Profesionales que comparten prácticas y estándares.</p>
-          </article>
-          <article class="milestone reveal">
-            <time>2018</time>
+          </div>
+          <div class="timeline__item reveal">
+            <time datetime="2018">2018</time>
             <h3>Se consolida el capítulo Norte Perú</h3>
-            <p>Integramos Cajamarca, Piura y Trujillo. Más alcance, más impacto.</p>
-          </article>
-          <article class="milestone reveal">
-            <time>Hoy</time>
+            <p>Cajamarca, Piura y Trujillo unidos para mayor impacto.</p>
+          </div>
+          <div class="timeline__item reveal">
+            <time datetime="2025">Hoy</time>
             <h3>Crecimiento sostenido</h3>
-            <p>Formación continua, alianzas y eventos que mueven a la región.</p>
-          </article>
+            <p>Formación continua, alianzas y eventos que mueven la región.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== Cap 4: Comunidad (rostros + cifras) ===== -->
-    <section id="cap-4" class="chapter community">
+    <!-- COMUNIDAD -->
+    <section id="cap-4" class="section section--alt" aria-labelledby="comunidad-title">
       <div class="container">
-        <header class="chapter__head">
+        <header class="section__head">
           <span class="kicker">Capítulo IV</span>
-          <h2>Personas que hacen que pase</h2>
+          <h2 id="comunidad-title">Personas que hacen que pase</h2>
         </header>
 
-        <div class="grid-4 faces">
-          <article class="face reveal">
-            <img src="img/juntaDirectiva/Henyer_Ninaquispe.png" alt="Heyner Ninaquispe">
+        <div class="grid grid-4">
+          <article class="profile reveal">
+            <img src="img/juntaDirectiva/Henyer_Ninaquispe.png" alt="Heyner Ninaquispe — Presidente" loading="lazy">
             <h4>Heyner Ninaquispe</h4><span>Presidente</span>
           </article>
-          <article class="face reveal">
-            <img src="img/juntaDirectiva/Oscar_Zocon.png" alt="Oscar Zocón">
+          <article class="profile reveal">
+            <img src="img/juntaDirectiva/Oscar_Zocon.png" alt="Oscar Zocón — Presidente Electo" loading="lazy">
             <h4>Oscar Zocón</h4><span>Presidente Electo</span>
           </article>
-          <article class="face reveal">
-            <img src="img/juntaDirectiva/Carlos_Briceno.png" alt="Carlos Briceño">
+          <article class="profile reveal">
+            <img src="img/juntaDirectiva/Carlos_Briceno.png" alt="Carlos Briceño — VP Comunicaciones" loading="lazy">
             <h4>Carlos Briceño</h4><span>VP Comunicaciones</span>
           </article>
-          <article class="face reveal">
-            <img src="img/juntaDirectiva/Omar_Rodriguez.png" alt="Omar Rodríguez">
+          <article class="profile reveal">
+            <img src="img/juntaDirectiva/Omar_Rodriguez.png" alt="Omar Rodríguez — VP Finanzas" loading="lazy">
             <h4>Omar Rodríguez</h4><span>VP Finanzas</span>
           </article>
         </div>
 
-        <div class="stats reveal">
-          <div class="stat"><span data-count="500">0</span><small>Miembros y aliados</small></div>
-          <div class="stat"><span data-count="30">0</span><small>Eventos al año</small></div>
-          <div class="stat"><span data-count="120">0</span><small>PDUs otorgados</small></div>
-          <div class="stat"><span data-count="100">0</span><small>Voluntarios</small></div>
+        <div class="stats glass reveal" role="group" aria-label="Estadísticas del capítulo">
+          <div><strong data-count="500">0</strong><small>Miembros y aliados</small></div>
+          <div><strong data-count="30">0</strong><small>Eventos al año</small></div>
+          <div><strong data-count="120">0</strong><small>PDUs otorgados</small></div>
+          <div><strong data-count="100">0</strong><small>Voluntarios</small></div>
         </div>
       </div>
     </section>
 
-    <!-- ===== Cap 5: Casos (story cards) ===== -->
-    <section id="cap-5" class="chapter cases">
+    <!-- CASOS -->
+    <section id="cap-5" class="section" aria-labelledby="impacto-title">
       <div class="container">
-        <header class="chapter__head">
+        <header class="section__head">
           <span class="kicker">Capítulo V</span>
-          <h2>Historias cortas de impacto</h2>
+          <h2 id="impacto-title">Historias de impacto</h2>
         </header>
 
-        <div class="casegrid">
-          <article class="case reveal">
+        <div class="grid grid-3">
+          <!-- Cada card abre un modal -->
+          <article class="card card--story reveal">
             <h3>PMO universitaria</h3>
             <p>Alianza con facultad local para implementar buenas prácticas y PDUs.</p>
-            <a href="#" class="link">Leer más</a>
+            <a href="#modal-pmo" class="link">Leer más</a>
           </article>
-          <article class="case reveal">
+          <article class="card card--story reveal">
             <h3>Voluntariado ágil</h3>
             <p>Equipos multidisciplinares entregando valor en 6 semanas.</p>
-            <a href="#" class="link">Leer más</a>
+            <a href="#modal-agil" class="link">Leer más</a>
           </article>
-          <article class="case reveal">
+          <article class="card card--story reveal">
             <h3>Congreso regional</h3>
             <p>Networking y tendencias con speakers nacionales e internacionales.</p>
-            <a href="#" class="link">Leer más</a>
+            <a href="#modal-congreso" class="link">Leer más</a>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ===== Cap 6: Eventos ===== -->
-    <section id="cap-6" class="chapter events">
+    <!-- EVENTOS -->
+    <section id="cap-6" class="section section--alt" aria-labelledby="eventos-title">
       <div class="container">
-        <header class="chapter__head">
+        <header class="section__head">
           <span class="kicker">Capítulo VI</span>
-          <h2>Próximos eventos</h2>
+          <h2 id="eventos-title">Próximos eventos</h2>
         </header>
 
-        <div class="cards">
-          <article class="card reveal">
-            <time class="badge">15 Sep</time>
+        <!-- Filtros simples -->
+        <div class="reveal" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+          <button class="btn btn--secondary" data-filter="all">Todos</button>
+          <button class="btn btn--secondary" data-filter="virtual">Virtuales</button>
+          <button class="btn btn--secondary" data-filter="presencial">Presenciales</button>
+          <button class="btn btn--secondary" data-filter="formacion">Formación</button>
+        </div>
+
+        <div class="grid grid-3" id="eventsGrid">
+          <article class="event reveal glass" data-tags="formacion presencial">
+            <time class="badge" datetime="2025-09-15">15 Sep</time>
             <h3>Dirección de Proyectos Ágiles</h3>
             <p>Sesión práctica para líderes de equipos.</p>
+            <div class="mini-gallery" aria-label="Galería del evento" style="display:flex;gap:6px;margin:.4rem 0;">
+              <img src="img/eventos/1.jpg" alt="" width="56" height="40" loading="lazy">
+              <img src="img/eventos/2.jpg" alt="" width="56" height="40" loading="lazy">
+              <img src="img/eventos/3.jpg" alt="" width="56" height="40" loading="lazy">
+            </div>
+            <a href="#" class="btn btn--ghost">Inscribirme</a>
           </article>
-          <article class="card reveal">
-            <time class="badge">28 Sep</time>
+
+          <article class="event reveal glass" data-tags="virtual formacion">
+            <time class="badge" datetime="2025-09-28">28 Sep</time>
             <h3>PMI Study Group</h3>
             <p>Espacio guiado para tu certificación.</p>
+            <div class="mini-gallery" aria-label="Galería del evento" style="display:flex;gap:6px;margin:.4rem 0;">
+              <img src="img/eventos/4.jpg" alt="" width="56" height="40" loading="lazy">
+              <img src="img/eventos/5.jpg" alt="" width="56" height="40" loading="lazy">
+              <img src="img/eventos/6.jpg" alt="" width="56" height="40" loading="lazy">
+            </div>
+            <a href="#" class="btn btn--ghost">Reservar cupo</a>
           </article>
-          <article class="card reveal">
-            <time class="badge">12 Oct</time>
+
+          <article class="event reveal glass" data-tags="presencial">
+            <time class="badge" datetime="2025-10-12">12 Oct</time>
             <h3>Congreso Regional</h3>
             <p>Speakers nacionales e internacionales.</p>
+            <div class="mini-gallery" aria-label="Galería del evento" style="display:flex;gap:6px;margin:.4rem 0;">
+              <img src="img/portadas/cajamarca_portada.png" alt="" width="56" height="40" loading="lazy">
+              <img src="img/portadas/cajamarca_portada.png" alt="" width="56" height="40" loading="lazy">
+              <img src="img/portadas/cajamarca_portada.png" alt="" width="56" height="40" loading="lazy">
+            </div>
+            <a href="#" class="btn btn--ghost">Ver agenda</a>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ===== Cap 7: Cierre (CTA) ===== -->
-    <section id="cap-7" class="chapter cta">
-      <div class="container narrow">
-        <h2>¿Listo para el siguiente proyecto?</h2>
+    <!-- CTA -->
+    <section id="cap-7" class="section cta" aria-labelledby="cta-title">
+      <div class="container cta__box glass">
+        <h2 id="cta-title">¿Listo para el siguiente proyecto?</h2>
         <p class="lead">Únete a PMI y al capítulo Norte Perú. Hagamos que más ideas avancen.</p>
-        <a href="#" class="btn btn--light">Hazte miembro</a>
+        <div class="cta__actions">
+          <a href="#" class="btn btn--primary">Hazte miembro</a>
+          <a href="#cap-8" class="btn btn--secondary">Habla con nosotros</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="cap-8" class="section" aria-labelledby="contacto-title">
+      <div class="container contact">
+        <div>
+          <header class="section__head">
+            <span class="kicker">Contacto</span>
+            <h2 id="contacto-title">Conversemos</h2>
+          </header>
+
+          <form class="form" id="contactForm" novalidate>
+            <label>Nombre<input name="name" required aria-required="true" autocomplete="name"></label>
+            <label>Correo<input type="email" name="email" required aria-required="true" autocomplete="email"></label>
+            <label>Interés
+              <select name="topic" required aria-required="true">
+                <option value="" disabled selected>Selecciona</option>
+                <option value="membresia">Membresía</option>
+                <option value="pmp">Certificación</option>
+                <option value="alianzas">Alianzas</option>
+                <option value="voluntariado">Voluntariado</option>
+              </select>
+            </label>
+            <label>Mensaje<textarea name="message" rows="4"></textarea></label>
+            <label class="check"><input type="checkbox" required aria-required="true"> Acepto la política de privacidad</label>
+            <button class="btn btn--primary" type="submit">Enviar</button>
+            <p class="hint" role="status" aria-live="polite" hidden>Gracias. Te contactaremos pronto.</p>
+          </form>
+        </div>
+
+        <aside class="contact__aside glass">
+          <h3>Boletín mensual</h3>
+          <p>Resúmenes de eventos, oportunidades y PDUs.</p>
+          <form id="newsletterForm" class="newsletter" novalidate data-success="¡Listo! Revisa tu correo para confirmar.">
+            <input type="email" placeholder="tu@correo.com" required aria-required="true">
+            <button class="btn btn--secondary" type="submit">Suscribirme</button>
+          </form>
+          <hr>
+          <h4>También en</h4>
+          <ul class="social">
+            <li><a href="#" rel="noopener">LinkedIn</a></li>
+            <li><a href="#" rel="noopener">Facebook</a></li>
+            <li><a href="#" rel="noopener">YouTube</a></li>
+          </ul>
+          <address>
+            Cajamarca · Piura · Trujillo<br>
+            <a href="mailto:contacto@pminorte.pe">contacto@pminorte.pe</a>
+          </address>
+        </aside>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
+  <!-- FOOTER -->
+  <footer class="site-footer">
     <div class="container footer__grid">
       <p>© <span id="y"></span> PMI Norte Perú</p>
-      <nav class="footer__links" aria-label="Enlaces">
+      <nav class="footer__links" aria-label="Enlaces legales">
         <a href="#">Privacidad</a>
         <a href="#">Términos</a>
       </nav>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <!-- Modales de Historias de impacto (accesibles, sin dependencias) -->
+  <div id="modal-pmo" class="modal" aria-hidden="true" style="position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.55);z-index:80;">
+    <article class="card" role="dialog" aria-modal="true" aria-labelledby="modal-pmo-title" style="max-width:760px;width:92%;max-height:82vh;overflow:auto;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+        <h3 id="modal-pmo-title">PMO universitaria</h3>
+        <button class="btn btn--secondary" data-close-modal>Cerrar</button>
+      </header>
+      <p>Implementamos una oficina de proyectos con indicadores y lecciones aprendidas, alineada a estándares PMI.</p>
+      <img src="img/casos/pmo.jpg" alt="" style="width:100%;border-radius:10px" loading="lazy">
+      <ul>
+        <li>+25% tasa de finalización de proyectos</li>
+        <li>12 PDUs emitidos</li>
+        <li>3 pipelines estratégicos priorizados</li>
+      </ul>
+    </article>
+  </div>
+
+  <div id="modal-agil" class="modal" aria-hidden="true" style="position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.55);z-index:80;">
+    <article class="card" role="dialog" aria-modal="true" aria-labelledby="modal-agil-title" style="max-width:760px;width:92%;max-height:82vh;overflow:auto;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+        <h3 id="modal-agil-title">Voluntariado ágil</h3>
+        <button class="btn btn--secondary" data-close-modal>Cerrar</button>
+      </header>
+      <p>Equipos ágiles de voluntariado entregando valor en sprints de 2 semanas con demo y retro.</p>
+      <img src="img/casos/agil.jpg" alt="" style="width:100%;border-radius:10px" loading="lazy">
+      <ul>
+        <li>6 semanas de ejecución</li>
+        <li>KPIs de adopción y NPS</li>
+        <li>Mentoría entre capítulos</li>
+      </ul>
+    </article>
+  </div>
+
+  <div id="modal-congreso" class="modal" aria-hidden="true" style="position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.55);z-index:80;">
+    <article class="card" role="dialog" aria-modal="true" aria-labelledby="modal-congreso-title" style="max-width:760px;width:92%;max-height:82vh;overflow:auto;">
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+        <h3 id="modal-congreso-title">Congreso regional</h3>
+        <button class="btn btn--secondary" data-close-modal>Cerrar</button>
+      </header>
+      <p>Networking y tendencias con speakers nacionales e internacionales. Track híbrido con certificación de PDUs.</p>
+      <img src="img/casos/congreso.jpg" alt="" style="width:100%;border-radius:10px" loading="lazy">
+      <ul>
+        <li>+300 asistentes</li>
+        <li>4 tracks temáticos</li>
+        <li>Certificado digital y PDUs</li>
+      </ul>
+    </article>
+  </div>
+
+  <!-- Script base -->
+  <script src="js/main.js" defer></script>
+
+  <!-- Script ligero para modales y filtros (sin dependencias) -->
+  <script>
+    // Modales
+    document.querySelectorAll('a[href^="#modal-"]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const m = document.querySelector(link.getAttribute('href'));
+        if (!m) return;
+        m.style.display = 'grid';
+        m.setAttribute('aria-hidden', 'false');
+        m.querySelector('[data-close-modal]')?.focus();
+        const esc = (ev)=>{ if(ev.key === 'Escape'){ close(); } };
+        const close = ()=>{ m.style.display = 'none'; m.setAttribute('aria-hidden','true'); document.removeEventListener('keydown', esc); };
+        m.addEventListener('click', (ev)=>{ if(ev.target === m) close(); });
+        m.querySelector('[data-close-modal]').addEventListener('click', close);
+        document.addEventListener('keydown', esc);
+      });
+    });
+
+    // Filtros de eventos
+    (function(){
+      const grid = document.getElementById('eventsGrid');
+      if(!grid) return;
+      const cards = [...grid.querySelectorAll('.event')];
+      document.querySelectorAll('[data-filter]').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const tag = btn.dataset.filter;
+          cards.forEach(card=>{
+            const tags = (card.getAttribute('data-tags')||'').split(' ');
+            const show = tag === 'all' || tags.includes(tag);
+            card.style.display = show ? '' : 'none';
+          });
+        });
+      });
+    })();
+
+    // Quiz (mock submit, usa el mismo patrón de tu main.js)
+    document.getElementById('quizForm')?.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const hint = e.currentTarget.querySelector('.hint');
+      if(hint){ hint.hidden = false; }
+      e.currentTarget.reset();
+      // Podrías redirigir a una página de resultados o disparar un fetch
+    });
+  </script>
 </body>
 </html>
