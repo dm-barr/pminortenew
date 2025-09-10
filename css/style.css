@@ -123,7 +123,7 @@ small,
 .nav__menu {
   display: flex;
   align-items: center;
-  gap: 18px
+  gap: 1px
 }
 
 .nav__menu a {
@@ -148,15 +148,19 @@ small,
 
 /* BOTONES */
 .btn {
-  display: inline-block;
+  display: inline-flex;       /* cambia inline-block por inline-flex */
+  align-items: center;        /* centra verticalmente */
+  justify-content: center;    /* centra horizontalmente */
   font-weight: 800;
   text-decoration: none;
-  padding: .85rem 1.15rem;
+  padding: 1.2rem 1.15rem;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   transition: all .2s ease;
   cursor: pointer;
+  line-height: 1;             /* asegura consistencia vertical */
 }
+
 
 .btn--primary {
   color: #002633;
@@ -236,7 +240,7 @@ small,
 
 .lead {
   font-size: 1.15rem;
-  color: var(--ink-2)
+  color: #FFFFFF;
 }
 
 /* HERO — Fondo video + overlay */
@@ -244,6 +248,7 @@ small,
   color: #EAF6FB;
   position: relative;
   overflow: hidden;
+  
   background:
     radial-gradient(1000px 600px at -10% -10%, rgba(108, 190, 222, .28) 0, transparent 60%),
     radial-gradient(700px 500px at 110% 20%, rgba(68, 120, 155, .35) 0, transparent 55%),
@@ -270,7 +275,7 @@ small,
 }
 
 .hero__copy .lead {
-  color: #CFE9F3
+  color: #ffffff
 }
 
 .hero__actions {
@@ -804,7 +809,7 @@ button:focus-visible {
    ========================================================= */
    /* Estilos generales del header */
 .site-header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
