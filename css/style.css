@@ -113,11 +113,11 @@ small,
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 0
+  padding: 10px 0
 }
 
 .brand img {
-  height: 38px
+  height: 90px
 }
 
 .nav__menu {
@@ -132,6 +132,10 @@ small,
   font-weight: 600;
   padding: .55rem .2rem;
   border-bottom: 2px solid transparent
+}
+
+.nav__menu a.btn--primary {
+  padding: .8rem 1.5rem;
 }
 
 .nav__menu a:hover {
