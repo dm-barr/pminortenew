@@ -29,6 +29,12 @@
       <a class="brand" aria-label="PMI Norte Perú - Inicio">
         <img src="img/logo/logo_blanco.png" alt="PMI Norte Perú" height="50" loading="eager">
       </a>
+
+      <!-- Botón de menú hamburguesa para móviles -->
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+
       <nav class="nav__menu" aria-label="Navegación principal">
         <a href="#cap-1">Misión</a>
         <a href="#cap-2">¿Por qué PMI?</a>
@@ -40,6 +46,50 @@
       </nav>
     </div>
   </header>
+
+
+  <!-- Script para el menú hamburguesa -->
+  <script>
+    // Funcionalidad para el menú hamburguesa
+    document.addEventListener('DOMContentLoaded', function () {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navMenu = document.querySelector('.nav__menu');
+
+      if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function () {
+          const isExpanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !isExpanded);
+          navMenu.classList.toggle('active');
+
+          // Prevenir scroll cuando el menú está abierto
+          document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        const navLinks = document.querySelectorAll('.nav__menu a');
+        navLinks.forEach(link => {
+          link.addEventListener('click', function () {
+            navToggle.setAttribute('aria-expanded', 'false');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+          });
+        });
+
+        // Cerrar menú al hacer clic fuera de él
+        document.addEventListener('click', function (event) {
+          const isClickInsideMenu = navMenu.contains(event.target);
+          const isClickOnToggle = navToggle.contains(event.target);
+
+          if (!isClickInsideMenu && !isClickOnToggle && navMenu.classList.contains('active')) {
+            navToggle.setAttribute('aria-expanded', 'false');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        });
+      }
+    });
+  </script>
+
 
   <!-- Rail lateral (scrollspy) -->
   <nav id="railNav" aria-label="Índice de secciones"
@@ -286,15 +336,19 @@
           <button class="btn btn--secondary" data-filter="presencial">Presenciales</button>
           <button class="btn btn--secondary" data-filter="formacion">Formación</button>
         </div>
-
         <div class="grid grid-3" id="eventsGrid">
+
           <article class="event reveal glass" data-tags="formacion presencial">
             <time class="badge" datetime="2025-09-15">15 Sep</time>
             <img src="img/logo/logo.png" alt="Dirección de Proyectos Ágiles"
               style="width:100%; height:auto; display:block; margin-bottom:10px;">
             <h3>Dirección de Proyectos Ágiles</h3>
             <p>Sesión práctica para líderes de equipos.</p>
-            <a href="#" class="btn btn--ghost">Inscribirme</a>
+            <button class="btn btn--ghost saber-mas" data-title="Dirección de Proyectos Ágiles"
+              data-description="Sesión práctica para líderes de equipos. Aprende a aplicar metodologías ágiles como Scrum y Kanban en tus proyectos para mejorar la eficiencia y la adaptabilidad. Ideal para gerentes, líderes de equipo y profesionales que buscan optimizar sus procesos."
+              data-date="15 de septiembre de 2025" data-banner="https://i.ibb.co/6P06F4g/banner.png"
+              data-inscripcion="#">Saber más</button>
+            <a href="#" class="btn btn--ghost">Inscripción</a>
           </article>
 
           <article class="event reveal glass" data-tags="virtual formacion">
@@ -303,20 +357,87 @@
               style="width:100%; height:auto; display:block; margin-bottom:10px;">
             <h3>PMI Study Group</h3>
             <p>Espacio guiado para tu certificación.</p>
-            <a href="#" class="btn btn--ghost">Reservar cupo</a>
+            <button class="btn btn--ghost saber-mas" data-title="PMI Study Group"
+              data-description="Un espacio guiado y colaborativo para prepararte para tu certificación PMI. Resoluciones de preguntas, discusión de temas y simulacros de examen para asegurar tu éxito."
+              data-date="28 de septiembre de 2025" data-banner="https://i.ibb.co/6P06F4g/banner.png"
+              data-inscripcion="#">Saber más</button>
+            <a href="#" class="btn btn--ghost">Inscripción</a>
           </article>
 
           <article class="event reveal glass" data-tags="presencial">
             <time class="badge" datetime="2025-10-12">12 Oct</time>
-            <img src="img/logo/logo.png" alt="Dirección de Proyectos Ágiles"
+            <img src="img/logo/logo.png" alt="Congreso Regional"
               style="width:100%; height:auto; display:block; margin-bottom:10px;">
             <h3>Congreso Regional</h3>
             <p>Speakers nacionales e internacionales.</p>
-            <a href="#" class="btn btn--ghost">Ver agenda</a>
+            <button class="btn btn--ghost saber-mas" data-title="Congreso Regional"
+              data-description="El evento más importante del año. Únete a líderes y expertos de la industria para explorar las últimas tendencias y mejores prácticas en la gestión de proyectos. Habrá speakers de talla nacional e internacional. Incluye ponencias, talleres y networking."
+              data-date="12 de octubre de 2025" data-banner="https://i.ibb.co/6P06F4g/banner.png"
+              data-inscripcion="#">Saber más</button>
+            <a href="" class="btn btn--ghost">Inscripción</a>
           </article>
+        </div>
+
+        <div id="modal-evento" class="modal">
+          <div class="modal-contenido">
+            <span class="cerrar">&times;</span>
+            <img id="modal-banner" src="" alt="Banner del evento" class="modal-banner">
+            <div class="modal-info">
+              <h3 id="modal-titulo"></h3>
+              <p id="modal-descripcion"></p>
+              <p><strong>Fecha:</strong> <span id="modal-fecha"></span></p>
+              <a href="" id="modal-inscripcion" class="btn btn-inscripcion">Inscripción</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- Java Script para Eventos -->
+    <script>
+      // Obtiene el modal y sus elementos
+      const modal = document.getElementById("modal-evento");
+      const modalTitulo = document.getElementById("modal-titulo");
+      const modalDescripcion = document.getElementById("modal-descripcion");
+      const modalFecha = document.getElementById("modal-fecha");
+      const modalBanner = document.getElementById("modal-banner");
+      const modalInscripcion = document.getElementById("modal-inscripcion");
+      const cerrarBtn = document.querySelector(".cerrar");
+
+      // Agrega un evento 'click' a cada botón 'Saber más'
+      document.querySelectorAll(".saber-mas").forEach(boton => {
+        boton.addEventListener("click", function () {
+          // Lee los datos del botón que fue clickeado
+          const titulo = this.getAttribute("data-title");
+          const descripcion = this.getAttribute("data-description");
+          const fecha = this.getAttribute("data-date");
+          const banner = this.getAttribute("data-banner");
+          const inscripcion = this.getAttribute("data-inscripcion");
+
+          // Llena el modal con los datos leídos
+          modalTitulo.textContent = titulo;
+          modalDescripcion.textContent = descripcion;
+          modalFecha.textContent = fecha;
+          modalBanner.src = banner;
+          modalInscripcion.href = inscripcion;
+
+          // Muestra el modal
+          modal.style.display = "flex";
+        });
+      });
+
+      // Cierra el modal cuando se hace click en la X
+      cerrarBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+      });
+
+      // Cierra el modal cuando se hace click fuera del contenido
+      window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    </script>
 
     <!-- CTA -->
     <section id="cap-7" class="section cta" aria-labelledby="cta-title">

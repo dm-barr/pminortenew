@@ -795,11 +795,321 @@ button:focus-visible {
     grid-template-columns: 1fr
   }
 }
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important; animation:none!important; transition:none!important}
+}
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    scroll-behavior: auto !important;
-    animation: none !important;
-    transition: none !important
+/* =========================================================
+   NUEVO: Estilos específicos PARA el NAV RESPONSIVO
+   ========================================================= */
+   /* Estilos generales del header */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #44789B; /* Color morado secundario */
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Estilos del menú normal (escritorio) */
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav__menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav__menu a:not(.btn--primary):hover {
+  color: #6CBEDE; /* Color celeste primario */
+}
+
+.nav__menu a:not(.btn--primary):after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #6CBEDE;
+  transition: width 0.3s ease;
+}
+
+.nav__menu a:not(.btn--primary):hover:after {
+  width: 100%;
+}
+
+/* Botón Únete con estilos de la paleta */
+.btn--primary {
+  background-color: #461DA3; /* Morado principal */
+  color: rgb(255, 255, 255);
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn--primary:hover {
+  background-color: #36177B; /* Morado más oscuro */
+  color: white;
+}
+
+/* Botón de menú hamburguesa (oculto en escritorio) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger {
+  width: 25px;
+  height: 2px;
+  background-color: white;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hamburger:before,
+.hamburger:after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.hamburger:before {
+  transform: translateY(-8px);
+}
+
+.hamburger:after {
+  transform: translateY(8px);
+}
+
+/* Estilos para móviles */
+@media screen and (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
   }
+  
+  .nav__menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: linear-gradient(135deg, #44789B 0%, #461DA3 100%); /* Degradado morado */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: right 0.4s ease;
+    padding: 2rem;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav__menu.active {
+    right: 0;
+  }
+  
+  /* Animación del botón hamburguesa a X */
+  .nav-toggle[aria-expanded="true"] .hamburger {
+    background-color: transparent;
+  }
+  
+  .nav-toggle[aria-expanded="true"] .hamburger:before {
+    transform: rotate(45deg);
+  }
+  
+  .nav-toggle[aria-expanded="true"] .hamburger:after {
+    transform: rotate(-45deg);
+  }
+  
+  /* Estilos para el botón Únete en móviles */
+  .nav__menu .btn--primary {
+    margin-top: 1rem;
+  }
+}
+
+/* Pequeños ajustes para tablets */
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  .nav__menu {
+    gap: 1rem;
+  }
+  
+  .nav__menu a {
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================================================
+   NUEVO: Estilos específicos los botones "saber más" y "inscripción" de los eventos
+   ========================================================= */
+.btn--ghost,
+.btn--ghost:hover,
+.btn--ghost:focus {
+  background-color: transparent;
+  color: #6CBEDE; /* Color celeste primario */
+  border: 2px solid #6CBEDE;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Resetea los estilos de navegador y unifica el aspecto */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: 2px solid #6CBEDE;
+  cursor: pointer;
+  font: inherit; /* Asegura que ambos elementos usen la misma fuente */
+  display: inline-block;
+  text-align: center;
+  box-sizing: border-box; /* Asegura que el padding y border no cambien el tamaño */
+  display: inline-block; /* Asegura que ambos elementos se comporten igual */
+  box-sizing: border-box; /* Incluye padding y border en el cálculo del ancho y alto */
+  padding: 0.5rem 1.2rem; /* Define un padding exacto para controlar el tamaño */
+  line-height: normal; /* Normaliza la altura del texto en ambos elementos */
+  text-decoration: none; /* Asegura que no haya subrayado en el enlace */
+  cursor: pointer; /* Unifica el cursor */
+  text-align: center; /* Centra el texto en ambos elementos */
+}
+.btn--ghost:hover {
+  background-color: #6CBEDE;
+  color: rgb(205, 106, 45);
+}
+
+/* =========================================================
+   NUEVO: Estilos específicos PARA ventana emergente (modal) de eventos
+   ========================================================= */
+   /* Estilos para el fondo del modal */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  display: none; /* Usamos flex para centrar */
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+/* Estilos para el contenido del modal */
+.modal-contenido {
+  position: relative;
+  background-color: #f7f7f7; /* Un gris claro para el fondo */
+  border-radius: 12px;
+  width: 90%;
+  max-width: 550px; /* Ancho máximo para el modal */
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+  animation-name: animar-modal;
+  animation-duration: 0.4s;
+  font-family: Arial, sans-serif; /* Tipografía más profesional */
+  overflow: hidden; /* Para que el banner no se desborde */
+}
+
+/* Imagen del banner */
+.modal-banner {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Contenedor de la información del evento */
+.modal-info {
+  padding: 30px;
+  text-align: left; /* Alineado a la izquierda para mejor lectura */
+  color: #333; /* Texto en gris oscuro */
+}
+
+.modal-info h3 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.modal-info p {
+  font-size: 1.1em;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.modal-info p strong {
+  color: #004d9c; /* Azul del PMI */
+}
+
+/* Botón de inscripción */
+.btn-inscripcion {
+  display: inline-block;
+  background-color: #f4623a; /* Naranja del PMI */
+  color: white;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.btn-inscripcion:hover {
+  background-color: #d1492b; /* Naranja más oscuro al pasar el mouse */
+}
+
+/* Botón para cerrar */
+.cerrar {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  color: #fff; /* Blanco sobre el banner para que sea visible */
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1001;
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+  transition: color 0.3s ease;
+}
+
+.cerrar:hover,
+.cerrar:focus {
+  color: #ccc;
+  text-decoration: none;
+}
+
+/* Animación para que aparezca suavemente */
+@keyframes animar-modal {
+  from {opacity: 0; transform: translateY(-50px);}
+  to {opacity: 1; transform: translateY(0);}
 }
