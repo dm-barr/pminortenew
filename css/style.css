@@ -366,7 +366,8 @@ small,
 .counter .num {
   display: block;
   font-weight: 900;
-  font-size: 1.6rem
+  font-size: 1.6rem;
+  color: #FFFFFF;
 }
 
 .counter small {
