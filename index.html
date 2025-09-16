@@ -18,11 +18,12 @@
   <meta property="og:title" content="PMI Norte Perú — Proyectos que mueven regiones" />
   <meta property="og:description" content="Formamos, conectamos e inspiramos para entregar valor mediante proyectos." />
   <meta property="og:image" content="img/og/cover.jpg" />
+  <script src="js/btnHamburguesa.js"></script>
+  <script src="js/Evento.js" defer></script>
 </head>
 
 <body class="theme-celeste">
   <a class="skip" href="#main">Saltar al contenido</a>
-
   <!-- NAV -->
   <header class="site-header" role="banner" data-header>
     <div class="container nav">
@@ -46,50 +47,6 @@
       </nav>
     </div>
   </header>
-
-
-  <!-- Script para el menú hamburguesa -->
-  <script>
-    // Funcionalidad para el menú hamburguesa
-    document.addEventListener('DOMContentLoaded', function () {
-      const navToggle = document.querySelector('.nav-toggle');
-      const navMenu = document.querySelector('.nav__menu');
-
-      if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function () {
-          const isExpanded = this.getAttribute('aria-expanded') === 'true';
-          this.setAttribute('aria-expanded', !isExpanded);
-          navMenu.classList.toggle('active');
-
-          // Prevenir scroll cuando el menú está abierto
-          document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        });
-
-        // Cerrar menú al hacer clic en un enlace
-        const navLinks = document.querySelectorAll('.nav__menu a');
-        navLinks.forEach(link => {
-          link.addEventListener('click', function () {
-            navToggle.setAttribute('aria-expanded', 'false');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = '';
-          });
-        });
-
-        // Cerrar menú al hacer clic fuera de él
-        document.addEventListener('click', function (event) {
-          const isClickInsideMenu = navMenu.contains(event.target);
-          const isClickOnToggle = navToggle.contains(event.target);
-
-          if (!isClickInsideMenu && !isClickOnToggle && navMenu.classList.contains('active')) {
-            navToggle.setAttribute('aria-expanded', 'false');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = '';
-          }
-        });
-      }
-    });
-  </script>
-
 
   <!-- Rail lateral (scrollspy) -->
   <nav id="railNav" aria-label="Índice de secciones"
@@ -336,6 +293,7 @@
           <button class="btn btn--secondary" data-filter="presencial">Presenciales</button>
           <button class="btn btn--secondary" data-filter="formacion">Formación</button>
         </div>
+
         <div class="grid grid-3" id="eventsGrid">
 
           <article class="event reveal glass" data-tags="formacion presencial">
@@ -372,12 +330,11 @@
             <p>Speakers nacionales e internacionales.</p>
             <button class="btn btn--ghost saber-mas" data-title="Congreso Regional"
               data-description="El evento más importante del año. Únete a líderes y expertos de la industria para explorar las últimas tendencias y mejores prácticas en la gestión de proyectos. Habrá speakers de talla nacional e internacional. Incluye ponencias, talleres y networking."
-              data-date="12 de octubre de 2025" data-banner="https://i.ibb.co/6P06F4g/banner.png"
-              data-inscripcion="#">Saber más</button>
+              data-date="12 de octubre de 2025" data-banner="https://i.ibb.co/6P06F4g/banner.png" data-inscripcion="#">Saber más</button>
             <a href="" class="btn btn--ghost">Inscripción</a>
           </article>
-        </div>
 
+        </div>
         <div id="modal-evento" class="modal">
           <div class="modal-contenido">
             <span class="cerrar">&times;</span>
@@ -392,52 +349,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Java Script para Eventos -->
-    <script>
-      // Obtiene el modal y sus elementos
-      const modal = document.getElementById("modal-evento");
-      const modalTitulo = document.getElementById("modal-titulo");
-      const modalDescripcion = document.getElementById("modal-descripcion");
-      const modalFecha = document.getElementById("modal-fecha");
-      const modalBanner = document.getElementById("modal-banner");
-      const modalInscripcion = document.getElementById("modal-inscripcion");
-      const cerrarBtn = document.querySelector(".cerrar");
-
-      // Agrega un evento 'click' a cada botón 'Saber más'
-      document.querySelectorAll(".saber-mas").forEach(boton => {
-        boton.addEventListener("click", function () {
-          // Lee los datos del botón que fue clickeado
-          const titulo = this.getAttribute("data-title");
-          const descripcion = this.getAttribute("data-description");
-          const fecha = this.getAttribute("data-date");
-          const banner = this.getAttribute("data-banner");
-          const inscripcion = this.getAttribute("data-inscripcion");
-
-          // Llena el modal con los datos leídos
-          modalTitulo.textContent = titulo;
-          modalDescripcion.textContent = descripcion;
-          modalFecha.textContent = fecha;
-          modalBanner.src = banner;
-          modalInscripcion.href = inscripcion;
-
-          // Muestra el modal
-          modal.style.display = "flex";
-        });
-      });
-
-      // Cierra el modal cuando se hace click en la X
-      cerrarBtn.addEventListener("click", function () {
-        modal.style.display = "none";
-      });
-
-      // Cierra el modal cuando se hace click fuera del contenido
-      window.addEventListener("click", function (event) {
-        if (event.target === modal) {
-          modal.style.display = "none";
-        }
-      });
-    </script>
 
     <!-- CTA -->
     <section id="cap-7" class="section cta" aria-labelledby="cta-title">
