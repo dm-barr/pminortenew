@@ -5,16 +5,13 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const form = e.target;
   const formData = new FormData(form);
-  formData.append("formType", "contacto"); // ⚡ identificar tipo
-
+  formData.append("formType", "contacto"); 
   try {
     const response = await fetch(scriptURL, { method: "POST", body: formData });
     const data = await response.json();
-    alert(`✅ ${data.message}`);
     form.reset();
   } catch (err) {
     console.error(err);
-    alert("❌ Error al enviar contacto");
   }
 });
 
@@ -23,15 +20,13 @@ document.getElementById("newsletterForm").addEventListener("submit", async (e) =
   e.preventDefault();
   const form = e.target;
   const formData = new FormData(form);
-  formData.append("formType", "boletin"); // ⚡ identificar tipo
+  formData.append("formType", "boletin"); 
 
   try {
     const response = await fetch(scriptURL, { method: "POST", body: formData });
     const data = await response.json();
-    alert(`✅ ${data.message}`);
     form.reset();
   } catch (err) {
     console.error(err);
-    alert("❌ Error al enviar boletín");
   }
 });
