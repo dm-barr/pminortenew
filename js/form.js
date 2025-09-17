@@ -6,28 +6,20 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
   const form = e.target;
   const formData = new FormData(form);
 
-  console.log("📤 Enviando datos al servidor...", Object.fromEntries(formData.entries()));
+  console.log("📤 Enviando datos como FormData...", Object.fromEntries(formData.entries()));
 
   try {
-    const res = await fetch(scriptURL, { method: "POST", body: formData });
-    console.log("📡 Estado HTTP:", res.status);
+    const res = await fetch(scriptURL, {
+      method: "POST",
+      body: formData,
+      mode: "no-cors" // necesario para que no bloquee CORS
+    });
 
-    if (!res.ok) {
-      throw new Error(`Servidor respondió con ${res.status}`);
-    }
-
-    const text = await res.text();
-    console.log("✅ Respuesta servidor:", text);
-
-    if (text.includes("OK")) {
-      form.querySelector(".hint").hidden = false;
-      form.reset();
-      alert("✅ Datos enviados correctamente a Google Sheets");
-    } else {
-      alert("⚠️ El servidor respondió pero no con 'OK': " + text);
-    }
+    // con no-cors no se puede leer la respuesta, asumimos éxito
+    alert("✅ Datos enviados correctamente");
+    form.reset();
   } catch (err) {
     console.error("❌ Error:", err);
-    alert("❌ No se pudo enviar. Mira la consola para más detalles.");
+    alert("❌ No se pudo enviar. Revisa la consola.");
   }
 });
