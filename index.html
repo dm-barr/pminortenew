@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description"
     content="PMI Norte Perú. Misión, comunidad y eventos de dirección de proyectos en Cajamarca, Piura y Trujillo." />
-  <link rel="icon" href="img/favicon.ico" />
+  <link rel="iscon" href="img/favicon.ico" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Aptos:wght@400;600;700;800&family=Raleway:wght@400;500;600&display=swap"
@@ -20,7 +20,7 @@
   <meta property="og:image" content="img/og/cover.jpg" />
   <script src="js/btnHamburguesa.js"></script>
   <script src="js/Evento.js" defer></script>
-  <script src="js/Comunidad.js" defer></script>
+  <script src="js/form.js" defer></script>
 </head>
 
 <body class="theme-celeste">
@@ -411,7 +411,7 @@
           <form id="newsletterForm" class="newsletter-form" novalidate
             data-success="¡Listo! Revisa tu correo para confirmar.">
             <div class="input-container">
-              <input type="email" placeholder="tu@correo.com" required aria-required="true">
+              <input type="email" name="email" placeholder="tu@correo.com" required aria-required="true">
             </div>
             <button class="btn btn--newsletter" type="submit">
               Suscribirme
@@ -510,6 +510,7 @@
 
   <!-- Script base -->
   <script src="js/main.js" defer></script>
+  
 
   <!-- Script ligero para modales y filtros (sin dependencias) -->
   <script>
