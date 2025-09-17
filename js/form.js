@@ -1,4 +1,4 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbwVW9WPrwzM57LvPx8BxT9pRQ7PQupOIPSURNd2EJEWdteW9bUp_3nknoHPF-A8hCTiMg/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbx80LfsDjmQ87zWe8XkVjn8ca9BDrkbSiduYbW-WoSCrhSnkBkQrT0KOjp5plfWK3ODOA/exec";
 
 // Formulario de Contacto
 document.getElementById("contactForm").addEventListener("submit", async (e) => {
@@ -8,8 +8,9 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
   formData.append("formType", "contacto"); // ⚡ identificar tipo
 
   try {
-    await fetch(scriptURL, { method: "POST", body: formData, mode: "no-cors" });
-    alert("✅ Formulario de contacto enviado");
+    const response = await fetch(scriptURL, { method: "POST", body: formData });
+    const data = await response.json();
+    alert(`✅ ${data.message}`);
     form.reset();
   } catch (err) {
     console.error(err);
@@ -25,8 +26,9 @@ document.getElementById("newsletterForm").addEventListener("submit", async (e) =
   formData.append("formType", "boletin"); // ⚡ identificar tipo
 
   try {
-    await fetch(scriptURL, { method: "POST", body: formData, mode: "no-cors" });
-    alert("✅ Suscripción al boletín registrada");
+    const response = await fetch(scriptURL, { method: "POST", body: formData });
+    const data = await response.json();
+    alert(`✅ ${data.message}`);
     form.reset();
   } catch (err) {
     console.error(err);
