@@ -20,6 +20,7 @@
   <meta property="og:image" content="img/og/cover.jpg" />
   <script src="js/btnHamburguesa.js"></script>
   <script src="js/Evento.js" defer></script>
+  <script src="js/Comunidad.js" defer></script>
 </head>
 
 <body class="theme-celeste">
@@ -212,29 +213,42 @@
 
     <!-- COMUNIDAD -->
     <section id="cap-4" class="section section--alt" aria-labelledby="comunidad-title">
-      <div class="container">
-        <header class="section__head">
-          <h2 id="comunidad-title">Personas que hacen que suceda</h2>
-        </header>
+        <div class="container">
+            <header class="section__head">
+                <h2 id="comunidad-title">Personas que hacen que suceda</h2>
+            </header>
 
-        <div class="grid grid-4">
-          <article class="profile reveal">
-            <img src="img/juntaDirectiva/Henyer_Ninaquispe.png" alt="Heyner Ninaquispe — Presidente" loading="lazy">
-            <h4>Heyner Ninaquispe</h4><span>Presidente</span>
-          </article>
-          <article class="profile reveal">
-            <img src="img/juntaDirectiva/Oscar_Zocon.png" alt="Oscar Zocón — Presidente Electo" loading="lazy">
-            <h4>Oscar Zocón</h4><span>Presidente Electo</span>
-          </article>
-          <article class="profile reveal">
-            <img src="img/juntaDirectiva/Carlos_Briceno.png" alt="Carlos Briceño — VP Comunicaciones" loading="lazy">
-            <h4>Carlos Briceño</h4><span>VP Comunicaciones</span>
-          </article>
-          <article class="profile reveal">
-            <img src="img/juntaDirectiva/Omar_Rodriguez.png" alt="Omar Rodríguez — VP Finanzas" loading="lazy">
-            <h4>Omar Rodríguez</h4><span>VP Finanzas</span>
-          </article>
+            <div class="carousel">
+                <div class="carousel__container">
+                    <article class="profile carousel__item">
+                        <img src="img/juntaDirectiva/Henyer_Ninaquispe.png" alt="Heyner Ninaquispe — Presidente" loading="lazy">
+                        <h4>Heyner Ninaquispe</h4><span>Presidente</span>
+                    </article>
+                    <article class="profile carousel__item">
+                        <img src="img/juntaDirectiva/Oscar_Zocon.png" alt="Oscar Zocón — Presidente Electo" loading="lazy">
+                        <h4>Oscar Zocón</h4><span>Presidente Electo</span>
+                    </article>
+                    <article class="profile carousel__item">
+                        <img src="img/juntaDirectiva/Carlos_Briceno.png" alt="Carlos Briceño — VP Comunicaciones" loading="lazy">
+                        <h4>Carlos Briceño</h4><span>VP Comunicaciones</span>
+                    </article>
+                    <article class="profile carousel__item">
+                        <img src="img/juntaDirectiva/Omar_Rodriguez.png" alt="Omar Rodríguez — VP Finanzas" loading="lazy">
+                        <h4>Omar Rodríguez</h4><span>VP Finanzas</span>
+                    </article>
+                </div>
+
+                <div class="carousel__controls">
+                    <button class="carousel__button carousel__button--prev">&#10094;</button>
+                    <button class="carousel__button carousel__button--next">&#10095;</button>
+                </div>
+
+                <div class="carousel__indicators">
+                    <!-- Los indicadores se generarán con JavaScript -->
+                </div>
+            </div>
         </div>
+    </section>
 
         <div class="stats glass reveal" role="group" aria-label="Estadísticas del capítulo">
           <div><strong data-count="500">0</strong><small>Miembros y aliados</small></div>

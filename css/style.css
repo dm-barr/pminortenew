@@ -1119,3 +1119,82 @@ button:focus-visible {
   from {opacity: 0; transform: translateY(-50px);}
   to {opacity: 1; transform: translateY(0);}
 }
+
+/* =========================================================
+   NUEVO: Estilos específicos PARA la sección Comunidad CARRUSEL PARA JUNTA DIRECTIVA
+   ========================================================= */
+   /* Estilos para la sección comunidad */
+/* Estilos mínimos solo para el carrusel */
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel__container {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel__item {
+    flex: 0 0 25%; /* 4 elementos por vista por defecto */
+    padding: 0 10px;
+}
+
+.carousel__controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 15px;
+}
+
+.carousel__button {
+    background: #7f7f7f;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: opacity 0.3s ease;
+}
+
+.carousel__button:hover {
+    opacity: 0.8;
+}
+
+.carousel__indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 8px;
+}
+
+.carousel__indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.carousel__indicator.active {
+    background: #7f7f7f;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .carousel__item {
+        flex: 0 0 50%; /* 2 elementos por vista en tablets */
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel__item {
+        flex: 0 0 100%; /* 1 elemento por vista en móviles */
+    }
+}
