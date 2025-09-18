@@ -9,41 +9,42 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let currentIndex = 0;
     let itemsPerView = getItemsPerView();
+    let isAnimating = false;
     
     // Inicializar el carrusel
     initCarousel();
     
-    // Inicializar el carrusel
     function initCarousel() {
         initIndicators();
         updateCarousel();
         
-        // Event listeners para botones de navegación
-        prevButton.addEventListener('click', () => {
-            navigate('prev');
-        });
-        
-        nextButton.addEventListener('click', () => {
-            navigate('next');
-        });
-        
-        // Actualizar en redimensionamiento de ventana
+        // Event listeners
+        prevButton.addEventListener('click', () => navigate('prev'));
+        nextButton.addEventListener('click', () => navigate('next'));
         window.addEventListener('resize', handleResize);
     }
     
-    // Navegación del carrusel
     function navigate(direction) {
+        if (isAnimating) return;
+        
+        isAnimating = true;
+        
         if (direction === 'prev' && currentIndex > 0) {
             currentIndex--;
         } else if (direction === 'next' && currentIndex < carouselItems.length - itemsPerView) {
             currentIndex++;
         }
+        
         updateCarousel();
+        
+        // Reset animation flag después de la transición
+        setTimeout(() => {
+            isAnimating = false;
+        }, 500);
     }
     
-    // Actualizar la vista del carrusel
     function updateCarousel() {
-        const itemWidth = carouselItems[0].offsetWidth + 20; // Ancho + margen
+        const itemWidth = carouselItems[0].offsetWidth + parseInt(getComputedStyle(carouselItems[0]).marginRight) * 2;
         const translateX = -currentIndex * itemWidth;
         carouselContainer.style.transform = `translateX(${translateX}px)`;
         
@@ -51,14 +52,15 @@ document.addEventListener('DOMContentLoaded', function() {
         updateButtonStates();
     }
     
-    // Obtener número de elementos por vista según el ancho de pantalla
     function getItemsPerView() {
-        if (window.innerWidth < 576) return 1;
-        if (window.innerWidth < 992) return 2;
+        const width = window.innerWidth;
+        if (width < 576) return 1;
+        if (width < 768) return 1;
+        if (width < 992) return 2;
+        if (width < 1200) return 3;
         return 4;
     }
     
-    // Inicializar indicadores
     function initIndicators() {
         const totalItems = carouselItems.length;
         const totalPages = Math.ceil(totalItems / itemsPerView);
@@ -79,35 +81,28 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Actualizar estado de los indicadores
     function updateIndicators() {
         const indicators = document.querySelectorAll('.carousel__indicator');
         const activeIndicator = Math.floor(currentIndex / itemsPerView);
         
         indicators.forEach((indicator, index) => {
-            if (index === activeIndicator) {
-                indicator.classList.add('active');
-            } else {
-                indicator.classList.remove('active');
-            }
+            indicator.classList.toggle('active', index === activeIndicator);
         });
     }
     
-    // Actualizar estado de los botones
     function updateButtonStates() {
-        prevButton.style.opacity = currentIndex === 0 ? '0.5' : '1';
-        prevButton.style.cursor = currentIndex === 0 ? 'default' : 'pointer';
+        prevButton.disabled = currentIndex === 0;
+        nextButton.disabled = currentIndex >= carouselItems.length - itemsPerView;
         
+        prevButton.style.opacity = currentIndex === 0 ? '0.5' : '1';
         nextButton.style.opacity = currentIndex >= carouselItems.length - itemsPerView ? '0.5' : '1';
-        nextButton.style.cursor = currentIndex >= carouselItems.length - itemsPerView ? 'default' : 'pointer';
     }
     
-    // Manejar redimensionamiento de ventana
     function handleResize() {
         const newItemsPerView = getItemsPerView();
         if (newItemsPerView !== itemsPerView) {
             itemsPerView = newItemsPerView;
-            currentIndex = 0;
+            currentIndex = Math.min(currentIndex, Math.max(0, carouselItems.length - itemsPerView));
             initIndicators();
             updateCarousel();
         }
