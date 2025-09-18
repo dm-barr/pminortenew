@@ -809,13 +809,14 @@ button:focus-visible {
    NUEVO: Estilos específicos PARA el NAV RESPONSIVO
    ========================================================= */
    /* Estilos generales del header */
+ /* Estilos generales del header */
 .site-header {
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: #44789B; /* Color morado secundario */
+  background-color: #44789B;
   padding: 1rem 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -829,7 +830,13 @@ button:focus-visible {
   padding: 0 1.5rem;
 }
 
-/* Estilos del menú normal (escritorio) */
+/* Logo */
+.brand img {
+  height: 40px;
+  width: auto;
+}
+
+/* ESTILOS DE ESCRITORIO (por defecto) */
 .nav__menu {
   display: flex;
   align-items: center;
@@ -840,18 +847,19 @@ button:focus-visible {
   color: white;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   position: relative;
+  padding: 0.5rem 0;
 }
 
 .nav__menu a:not(.btn--primary):hover {
-  color: #6CBEDE; /* Color celeste primario */
+  color: #6CBEDE;
 }
 
 .nav__menu a:not(.btn--primary):after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: 0;
   left: 0;
   width: 0;
   height: 2px;
@@ -863,28 +871,30 @@ button:focus-visible {
   width: 100%;
 }
 
-/* Botón Únete con estilos de la paleta */
+/* Botón Únete */
 .btn--primary {
-  background-color: #461DA3; /* Morado principal */
-  color: rgb(255, 255, 255);
-  padding: 0.5rem 1.2rem;
+  background-color: #461DA3;
+  color: white;
+  padding: 0.6rem 1.5rem;
   border-radius: 6px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
 
 .btn--primary:hover {
-  background-color: #36177B; /* Morado más oscuro */
-  color: white;
+  background-color: transparent;
+  border-color: #461DA3;
+  color: #461DA3;
 }
 
-/* Botón de menú hamburguesa (oculto en escritorio) */
+/* Botón de menú hamburguesa (OCULTO en escritorio por defecto) */
 .nav-toggle {
-  display: none;
+  display: none; /* Oculto en desktop */
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -894,10 +904,11 @@ button:focus-visible {
 
 .hamburger {
   width: 25px;
-  height: 2px;
+  height: 3px;
   background-color: white;
   position: relative;
   transition: all 0.3s ease;
+  border-radius: 2px;
 }
 
 .hamburger:before,
@@ -905,9 +916,10 @@ button:focus-visible {
   content: '';
   position: absolute;
   width: 25px;
-  height: 2px;
+  height: 3px;
   background-color: white;
   transition: all 0.3s ease;
+  border-radius: 2px;
 }
 
 .hamburger:before {
@@ -918,61 +930,141 @@ button:focus-visible {
   transform: translateY(8px);
 }
 
-/* Estilos para móviles */
+/* ========== MÓVILES (768px o menos) ========== */
 @media screen and (max-width: 768px) {
+  .container.nav {
+    padding: 0 1rem;
+  }
+  
+  .brand img {
+    height: 35px;
+  }
+  
+  /* MOSTRAR botón hamburguesa en móviles */
   .nav-toggle {
     display: flex;
   }
   
+  /* OCULTAR menú normal en móviles */
   .nav__menu {
+    display: none;
     position: fixed;
     top: 0;
     right: -100%;
-    width: 70%;
-    max-width: 300px;
+    width: 80%;
+    max-width: 280px;
     height: 100vh;
-    background: linear-gradient(135deg, #44789B 0%, #461DA3 100%); /* Degradado morado */
+    background: linear-gradient(135deg, #44789B 0%, #461DA3 100%);
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 2rem;
-    transition: right 0.4s ease;
-    padding: 2rem;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    gap: 1.5rem;
+    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 5rem 1.5rem 2rem 1.5rem;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
   }
   
+  /* Mostrar menú cuando está activo */
   .nav__menu.active {
+    display: flex;
     right: 0;
+  }
+  
+  .nav__menu a {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .nav__menu a:last-child {
+    border-bottom: none;
+  }
+  
+  .nav__menu a:not(.btn--primary):after {
+    display: none;
+  }
+  
+  .btn--primary {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    width: 100%;
+    text-align: center;
   }
   
   /* Animación del botón hamburguesa a X */
   .nav-toggle[aria-expanded="true"] .hamburger {
     background-color: transparent;
+    transform: rotate(180deg);
   }
   
   .nav-toggle[aria-expanded="true"] .hamburger:before {
-    transform: rotate(45deg);
+    transform: rotate(45deg) translate(5px, 5px);
   }
   
   .nav-toggle[aria-expanded="true"] .hamburger:after {
-    transform: rotate(-45deg);
-  }
-  
-  /* Estilos para el botón Únete en móviles */
-  .nav__menu .btn--primary {
-    margin-top: 1rem;
+    transform: rotate(-45deg) translate(5px, -5px);
   }
 }
 
-/* Pequeños ajustes para tablets */
-@media screen and (max-width: 1024px) and (min-width: 769px) {
+/* Móviles pequeños (hasta 575px) */
+@media screen and (max-width: 576px) {
+  .site-header {
+    padding: 0.8rem 0;
+  }
+  
+  .brand img {
+    height: 30px;
+  }
+  
+  .nav-toggle {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .hamburger {
+    width: 22px;
+    height: 2px;
+  }
+  
+  .hamburger:before,
+  .hamburger:after {
+    width: 22px;
+    height: 2px;
+  }
+  
+  .hamburger:before {
+    transform: translateY(-7px);
+  }
+  
+  .hamburger:after {
+    transform: translateY(7px);
+  }
+  
   .nav__menu {
-    gap: 1rem;
+    width: 85%;
+    max-width: none;
+    padding: 4rem 1rem 2rem 1rem;
   }
   
   .nav__menu a {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    padding: 0.8rem;
   }
+  
+  .btn--primary {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Prevenir scroll cuando el menú está abierto */
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh;
 }
 
 /* =========================================================
