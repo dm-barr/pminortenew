@@ -1351,3 +1351,46 @@ body.no-scroll {
 .profile__image-container:hover img {
     transform: scale(1.03);
 }
+
+
+/* Estilo base (desktop/tablet) */
+.social-bar {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0 8px 8px 0;
+  z-index: 1000;
+}
+
+.social-bar a {
+  font-size: 28px;
+  color: #333;
+  text-decoration: none;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.social-bar a:hover {
+  transform: scale(1.2);
+  color: #0077b5; /* ejemplo: azul LinkedIn */
+}
+
+/* 🔹 Responsive para móviles */
+@media (max-width: 400px) {
+  .social-bar {
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    gap: 20px;
+    padding: 10px 20px;
+    border-radius: 12px 12px 0 0;
+    background: rgba(255, 255, 255, 0.9); /* un poco más sólido en móvil */
+  }
+}
